@@ -1,0 +1,86 @@
+.react-calendar__navigation
+  button.react-calendar__navigation__arrow:first-child {
+  display: none;
+}
+
+.react-calendar{
+  border: 2px solid;
+  border-radius: 3px;
+  background-color: transparent;
+  color: white;
+}
+.react-calendar__button{
+  color: white;
+}
+
+.react-calendar__navigation__label{
+  background-color:black;
+  font-size:1.5rem;
+
+}
+.react-calendar abbr{
+  text-decoration:none;
+}
+.react-calendar__tile:enabled:hover{
+  background-color:black;
+}
+.react-calendar__navigation button{
+  color:black;
+}
+.form-container input{
+  outline:none;
+}
+.form-container textarea{
+  outline:none;
+}
+.calendar-container{
+  background-color: #10439F;
+}
+
+@media (min-width: 768px){
+  .react-calendar{
+    width:50vw;
+    height:33vh;
+  }
+  .form-container {
+    position: relative;
+    left: 4rem;
+    bottom: 22rem;
+  }
+  .error-message{
+    position: relative;
+    top: -8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .react-calendar{
+    width:45vw;
+    height:50vh;
+  }
+  .form-container {
+    position: relative;
+    left: -5rem;
+    bottom: 1rem;
+  }
+  .error-message{
+    position: relative;
+    left: -4rem;
+    top:-1rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .react-calendar{
+    width:45vw;
+    height:45vh;
+  }
+  .form-container {
+    position: relative;
+    left: -11rem;
+    bottom: 1rem;
+  }
+  .error-message{
+    position: relative;
+    left: -9.5rem;
+  }
+}
