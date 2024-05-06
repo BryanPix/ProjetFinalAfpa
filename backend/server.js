@@ -42,7 +42,6 @@ app.listen(80, function () {
 })
 
 
-
 // routes (requete et réponses du serveur en fonction de la requete invoqué, lorsque l'utilisateur visite un URL spécifique, la route correspondante est déclenché et la réponse correspondante s'execute)
 // Permet d'utiliser(use) TOUTES les routes associées à la constante  dans l'url
 app.use('/api/user', userRoutes)

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import CalendarEventPopup from "./calendarPopup";
+import CalendarEventPopup from "./calendarForm";
 import CalendarDetails from "./calendarDetails";
 import { useCalendarContext } from "../../hooks/useCalendarContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
@@ -21,6 +21,7 @@ const CalendarApp = () => {
   const [currentDate, setCurrentDate] = useState("");
 //  deuxième argument (useEffect)
   useEffect(() => {
+    // Pour la date actuelle afficher en grand :D
     // fonction permettant de recuperer la date actuelle et la formatter
     const getCurrentDate = () => {
       const today = new Date();
@@ -50,18 +51,14 @@ const CalendarApp = () => {
           dispatch({ type: "SET_CALENDAR", payload: json });
         }
 
-        const transformedEvent = json.map(({ title, body: description }) => {
-          const generatedRandomDate = new Date(`
-            ${new Date().toLocaleDateString("fr-FR", { month: "short" })}
-            ${Math.floor(Math.random() * 28) + 1}
-            ${new Date().getFullYear()}
-            ${new Date().toTimeString()}
-          `);
+        const transformedEvent = json.map(({date, title, body: description }) => {
+          const eventDate = new Date(date); 
+
           return {
-            date: generatedRandomDate,
+            date: eventDate,
             title,
             description
-          };
+        };
         });
         
         setEventsForSelectedDate(transformedEvent);
@@ -78,10 +75,11 @@ const CalendarApp = () => {
   }
 
   const handleAddEvent = (title, description) => {
+    
     const newEvent = {
       date: date,
       title: title,
-      description: description
+      description: description,
     };
     setEventsForSelectedDate([...eventsForSelectedDate, newEvent]);
     setShowPopup(false);
@@ -102,7 +100,6 @@ const CalendarApp = () => {
   );
 
   return (
-
     <div className="calendar-container p-6 md:w-9/12 md:float-right  ">
         <h1 className="capitalize text-center text-white text-2xl font-bold underline underline-offset-4 pb-6">{currentDate}</h1>
 
@@ -115,9 +112,15 @@ const CalendarApp = () => {
           }
           className="md:float-left md:mb-2"
         />
+        {console.log(date.toLocaleDateString("fr-FR", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }))}
           {showPopup && <CalendarEventPopup handleAddEvent={handleAddEvent} />}
-          <CalendarDetails eventsForSelectedDate={filteredEvents} /> 
-        <div className="form-toggle bg-blue-500 rounded-sm text-center text-gray-50 md:my-24 py-1 px-3 md:px-5 md:w-fit">
+          <CalendarDetails eventsForSelectedDate={filteredEvents} />
+          <div className="form-toggle bg-blue-500 rounded-sm text-center text-gray-50 md:my-24 py-1 px-3 md:px-5 md:w-fit">
           <button onClick={togglePopup} >
             {showPopup ? "Annuler": "Ajouter Evenement"}
           </button>

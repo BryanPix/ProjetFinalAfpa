@@ -2,6 +2,14 @@
   button.react-calendar__navigation__arrow:first-child {
   display: none;
 }
+.react-calendar__navigation button {
+  background: none;
+  color: white;
+}
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+ background-color: brown;
+}
 
 .react-calendar{
   border: 2px solid;
@@ -14,18 +22,19 @@
 }
 
 .react-calendar__navigation__label{
-  background-color:black;
   font-size:1.5rem;
-
+}
+.react-calendar__navigation button:disabled{
+  background-color: brown;
+  font-size: 1.5rem;
 }
 .react-calendar abbr{
   text-decoration:none;
 }
 .react-calendar__tile:enabled:hover{
-  background-color:black;
+  background-color:brown;
 }
 .react-calendar__navigation button{
-  color:black;
 }
 .form-container input{
   outline:none;
@@ -72,7 +81,7 @@
 @media (min-width: 1536px) {
   .react-calendar{
     width:45vw;
-    height:45vh;
+    height:48vh;
   }
   .form-container {
     position: relative;

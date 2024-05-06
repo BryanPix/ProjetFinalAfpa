@@ -47,7 +47,7 @@ userSchema.statics.signup = async function(email, password, name) {
   }
   // On créer un salt avec bcrypt pour modifier le mot de passe en un string aléatoire pour ajouter une sécurité supplementaire
   // On utilise await car le salt prend du temps à agir par defaut (Surement pour éviter les attaques brut force);
-  // L'argument 10 est là pour désigner le nombre de "round" nécessaire, plus le nombre est haut plus long il est pour les hackers pour craquer le mot de passe mais aussi plus long il est pour les utilisateurs pour se connecter donc il faut trouver un juste milieu (la base par defaut est 10)
+  // L'argument 10 est là pour désigner le nombre de "round" nécessaire, plus le nombre est haut plus long il est pour le hash (le nombre retourné en hash est plus long)plus long il est pour les utilisateurs pour se connecter donc il faut trouver un juste milieu (la base par defaut est 10)
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
   // On prend le mot de passe qui est hash pour le conserver dans la base de données avec l'email de l'utilisateur (En noSQL on appelle ça un document pour l'utilisateur)

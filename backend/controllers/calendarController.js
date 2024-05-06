@@ -4,12 +4,34 @@ const mongoose = require('mongoose');
 
 // récuperation de toutes les tâches dans le calendrier
 const getCalendars = async (req, res) => {
+    const user_id = req.user._id;
 
-    const calendars = await Calendar.find({ }).sort({createdAt: -1}) // permet de trouver toutes les tâches du calendrier et de les trier par ancienté du plus recent au plus ancient
+    const calendars = await Calendar.find({ user_id }).sort({createdAt: -1}) // permet de trouver toutes les tâches du calendrier et de les trier par ancienté du plus recent au plus ancient
 
     res.status(200).json(calendars);
 }
+// récuperation d'une tâche dans le calendrier
+// const getCalendar = async (req, res) => {
+//     const user_id = req.user._id;
+//     const { date } = req.query; // Supposons que la date soit fournie en tant que query parameter
 
+//     const startDate = new Date(date); // Convertir la date fournie en objet Date
+
+//     // Calculer la date de fin en ajoutant un jour à la date fournie
+//     const endDate = new Date(startDate);
+//     endDate.setDate(startDate.getDate() + 1);
+
+//     // Filtrer les calendriers pour ceux qui tombent entre la date de début et la date de fin
+//     const calendars = await Calendar.find({ 
+//         user_id,
+//         createdAt: {
+//             $gte: startDate,
+//             $lt: endDate
+//         }
+//     }).sort({createdAt: -1});
+
+//     res.status(200).json(calendars);
+// }
 // création d'une tâche dans le calendrier
 const createCalendar = async (req, res) => {
     const {title, description} = req.body;
@@ -28,6 +50,7 @@ const createCalendar = async (req, res) => {
 
     // Ajoute la tâche du calendrier à la base de données
     try{
+        const user_id = req.user._id
         const calendars = await Calendar.create({title, description, user_id});
         res.status(200).json(calendars);
     } catch(error){
@@ -79,6 +102,7 @@ const deleteCalendar = async (req, res) => {
 
 module.exports = {
     getCalendars,
+    // getCalendar,
     createCalendar,
     deleteCalendar,
     updateCalendar
