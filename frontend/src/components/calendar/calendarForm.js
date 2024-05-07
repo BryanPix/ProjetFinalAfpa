@@ -7,9 +7,12 @@ const CalendarEventPopup = ({ handleAddEvent }) => {
   const { user } = useAuthContext();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const calendarDate = localStorage.test;
+  const [date, setDate] = useState( calendarDate);
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]); 
   
+
   const handleEventTitleChange = (e) => {
     setTitle(e.target.value);
     setError("");
@@ -19,7 +22,11 @@ const CalendarEventPopup = ({ handleAddEvent }) => {
     setDescription(e.target.value);
     setError("");
   }
-
+ 
+  const handleEventDateChange = (e) => {
+    setDate(e.target.value);
+    setError("");
+  }
   const handleSubmit = async (e) => {
     // permet d'eviter que la page refresh
     e.preventDefault();
@@ -45,8 +52,7 @@ const CalendarEventPopup = ({ handleAddEvent }) => {
       return;
     }
 
-    const calendarToDo = { title, description };
-
+    const calendarToDo = { title, description, date};
     const response = await fetch("/api/calendar", {
       method: "POST",
       body: JSON.stringify(calendarToDo),
@@ -63,9 +69,10 @@ const CalendarEventPopup = ({ handleAddEvent }) => {
       setEmptyFields(json.emptyFields || []);
     }  
     if (response.ok){
-      handleAddEvent(title,description);
+      handleAddEvent(title,description,date);
       setTitle("");
       setDescription("");
+      setDate("");
       setError(null);
       setEmptyFields([]);
       console.log("Nouvelle tâche ajoutée !!", json);
@@ -91,8 +98,16 @@ const CalendarEventPopup = ({ handleAddEvent }) => {
                 value={description}
                 spellCheck="false"
                 onChange={handleEventDescriptionChange}
-                className={`  border-2 bg-transparent block mb-4resize-none ${emptyFields.includes('title') ? 'error' : ''}`}
+                className={`  border-2 bg-transparent block mb-4resize-none ${emptyFields.includes('description') ? 'error' : ''}`}
             ></textarea>
+            <label className="font-bold">Date de l'évenement: </label>
+            <input
+                type="text"
+                id="date"
+                value={date}
+                onChange={handleEventDateChange}
+                className={` border-2 bg-transparent block mb-4 ${emptyFields.includes('date') ? 'error' : ""}`}
+            />
             <button type="submit" className="block bg-blue-500 rounded-sm text-center text-white my-3 py-1 px-3 ">Ajouter Evenement</button>
         </form>
         {error && <p className="error-message text-red-500 text-center border-2 border-red-500 md:float-right md:relative md:left-80 md:bottom-20  md:w-fit lg:inset-y-0 lg:inset-x-6">{error}</p>}

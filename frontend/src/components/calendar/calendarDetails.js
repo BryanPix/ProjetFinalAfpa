@@ -12,7 +12,7 @@ const CalendarDetails = () => {
     // Fetch events when component mounts or when selectedDate changes
     const fetchEvents = async () => {
       // Fetch events for selected date
-      const response = await fetch(`/api/calendar?date=${selectedDate.toISOString()}`, {
+      const response = await fetch("/api/calendar/", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -28,7 +28,7 @@ const CalendarDetails = () => {
     };
 
     fetchEvents();
-  }, [selectedDate, user.token]);
+  }, [user.token]);
 
   const handleDeleteClick = async (eventId) => {
     if (!user) {

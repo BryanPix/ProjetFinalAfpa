@@ -23,7 +23,7 @@ export default function Sidebar() {
       </div>
       </div>
     <Todo />  
-    <button onClick={handleClick} className="relative mb-10 px-8 py-2 border-2 text-white">Déconnection</button>
+    <button onClick={handleClick} className="relative mb-10 px-8 py-2 border-2 text-white">Déconnexion</button>
     </Menu>
   );
 };

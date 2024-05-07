@@ -21,7 +21,7 @@ export const calendarContextReducer = (state, action) => {
                         return task;
                     }
                 })
-            }
+            };
         case 'DELETE_CALENDAR':
             return {
                 calendar: state.calendar.filter((w) => w._id !== action.payload._id) 

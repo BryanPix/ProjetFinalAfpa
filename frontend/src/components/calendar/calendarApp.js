@@ -74,7 +74,13 @@ const CalendarApp = () => {
     setDate(date);
   }
 
-  const handleAddEvent = (title, description) => {
+  const calendarDate = date.toLocaleDateString("fr-FR", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const handleAddEvent = (title, description, date) => {
     
     const newEvent = {
       date: date,
@@ -98,7 +104,6 @@ const CalendarApp = () => {
   const filteredEvents = eventsForSelectedDate.filter(
     (event) => event.date.toDateString() === date.toDateString()
   );
-
   return (
     <div className="calendar-container p-6 md:w-9/12 md:float-right  ">
         <h1 className="capitalize text-center text-white text-2xl font-bold underline underline-offset-4 pb-6">{currentDate}</h1>
@@ -107,17 +112,19 @@ const CalendarApp = () => {
             onChange={handleDateChange} 
             value={date} 
             minDetail="year" 
-            tileContent={({ date }) => 
-              isDateWithEvent({ date }) && <div className="event-pointer"></div>
-          }
+            tileContent={({ calendarDate }) => 
+              isDateWithEvent({ calendarDate }) && <div className="event-pointer"></div>
+          } 
           className="md:float-left md:mb-2"
-        />
-        {console.log(date.toLocaleDateString("fr-FR", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                }))}
+          />
+          
+          {localStorage.setItem('test',date.toLocaleDateString("fr-FR", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }))}
+        {console.log(calendarDate)}
           {showPopup && <CalendarEventPopup handleAddEvent={handleAddEvent} />}
           <CalendarDetails eventsForSelectedDate={filteredEvents} />
           <div className="form-toggle bg-blue-500 rounded-sm text-center text-gray-50 md:my-24 py-1 px-3 md:px-5 md:w-fit">

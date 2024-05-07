@@ -23,10 +23,10 @@ router.use(requireAuth);
 router.post('/', createCalendar);
 
 // Récuperation de toutes les tâches dans le calendrier
-router.get('/', getCalendars);
+// router.get('/', getCalendars);
 
 // Récuperation d'une tâche dans le calendrier
-// router.get('/:id', getCalendar);
+router.get('/:id', getCalendars);
 
 // Mise à jour d'une tâche dans le calendrier
 router.patch('/:id', updateCalendar);

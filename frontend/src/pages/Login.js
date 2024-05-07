@@ -16,7 +16,7 @@ const Login = () => {
     <div className="login md:flex md:justify-center">
 
     <form onSubmit={handleSubmit}>
-      <h3 className="text-center text-4xl mb-6 text-white font-bold">Connection</h3>
+      <h3 className="text-center text-4xl mb-6 text-white font-bold">Connexion</h3>
       <div className="  block mb-8 mx-4">
         <label className=" login font-bold text-white">Email: </label>
         <input

@@ -34,7 +34,7 @@ const getCalendars = async (req, res) => {
 // }
 // création d'une tâche dans le calendrier
 const createCalendar = async (req, res) => {
-    const {title, description} = req.body;
+    const {title, description,date} = req.body;
 
     let emptyFields = []
 
@@ -44,6 +44,7 @@ const createCalendar = async (req, res) => {
     if(!description){
         emptyFields.push('description')
     }
+ 
     if(emptyFields.length > 0){
         return res.status(400).json({ error: `Veuillez remplir tous les champs.`, emptyFields })
     }
@@ -51,7 +52,7 @@ const createCalendar = async (req, res) => {
     // Ajoute la tâche du calendrier à la base de données
     try{
         const user_id = req.user._id
-        const calendars = await Calendar.create({title, description, user_id});
+        const calendars = await Calendar.create({title, description, user_id, date});
         res.status(200).json(calendars);
     } catch(error){
         res.status(400).json({error: error.message});
@@ -102,7 +103,6 @@ const deleteCalendar = async (req, res) => {
 
 module.exports = {
     getCalendars,
-    // getCalendar,
     createCalendar,
     deleteCalendar,
     updateCalendar

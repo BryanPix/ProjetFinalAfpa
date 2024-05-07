@@ -18,6 +18,7 @@ router.use(requireAuth);
 //on attache la constante router a un handler
 // recupere toutes les tâches
 router.get("/", getToDo);
+// router.get("/:id", getToDo);
 
 // Ajoute une tâche
 router.post("/", createToDo);

@@ -21,7 +21,7 @@ const Navbar = () => {
         <nav className="signup">
           {/* permet de montrer different bouton en fonction de si oui on non l'utilisateur est conncté */}
           {user && (<div>
-            <button onClick={handleClick} className="float-right relative mb-10 px-8 py-2 border-2 text-white right-12 top-5 hidden md:block">Déconnection</button>
+            <button onClick={handleClick} className="float-right relative mb-10 px-8 py-2 border-2 text-white right-12 top-5 hidden md:block">Déconnexion</button>
           </div>
           )}
           {!user && (<div className="md:flex md:justify-center md:mt-6">
