@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 
 // récuperation de toutes les tâches dans le calendrier
-const getCalendars = async (req, res) => {
+const getCalendar = async (req, res) => {
     const user_id = req.user._id;
 
     const calendars = await Calendar.find({ user_id }).sort({createdAt: -1}) // permet de trouver toutes les tâches du calendrier et de les trier par ancienté du plus recent au plus ancient
@@ -102,7 +102,7 @@ const deleteCalendar = async (req, res) => {
 
 
 module.exports = {
-    getCalendars,
+    getCalendar,
     createCalendar,
     deleteCalendar,
     updateCalendar

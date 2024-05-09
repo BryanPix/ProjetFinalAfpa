@@ -3,8 +3,7 @@ const express = require('express');
 
 const {
     createCalendar,
-    getCalendars,
-    // getCalendar,
+    getCalendar,
     updateCalendar,
     deleteCalendar
 } = require('../controllers/calendarController');
@@ -22,11 +21,8 @@ router.use(requireAuth);
 // Ajout d'une tâche dans le calendrier
 router.post('/', createCalendar);
 
-// Récuperation de toutes les tâches dans le calendrier
-// router.get('/', getCalendars);
-
 // Récuperation d'une tâche dans le calendrier
-router.get('/:id', getCalendars);
+router.get('/', getCalendar);
 
 // Mise à jour d'une tâche dans le calendrier
 router.patch('/:id', updateCalendar);

@@ -20,8 +20,8 @@ const calendarSchema = new Schema({
         ref: 'User', 
         required: true
     },
-    date:{
-        type: String,
+    date: {
+        type: Date,
         required: true
     }
 });

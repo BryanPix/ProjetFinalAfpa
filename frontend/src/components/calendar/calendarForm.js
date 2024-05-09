@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useCalendarContext } from "../../hooks/useCalendarContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
-const CalendarEventPopup = ({ handleAddEvent }) => {
+const CalendarEventPopup = ({ handleAddEvent, selectedDate }) => {
   const { dispatch } = useCalendarContext();
   const { user } = useAuthContext();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const calendarDate = localStorage.test;
-  const [date, setDate] = useState( calendarDate);
+  const [date, setDate] = useState("");
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]); 
-  
 
+  useEffect(() => {
+    setDate(selectedDate.toLocaleDateString("fr-FR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }));
+
+  }, [selectedDate]);
   const handleEventTitleChange = (e) => {
     setTitle(e.target.value);
     setError("");
@@ -42,17 +49,18 @@ const CalendarEventPopup = ({ handleAddEvent }) => {
       return;
     }
     if (!description && title) {
-      setEmptyFields(["hour"]);
+      setEmptyFields(["description"]);
       setError("Veuillez remplir le champ 'Description.'");
       return;
     }
     if (!title && !description) {
-      setEmptyFields(["title, hour"]);
+      setEmptyFields(["title, description"]);
       setError("Veuillez remplir tous les champs.");
       return;
     }
 
-    const calendarToDo = { title, description, date};
+    const formattedDate = new Date(selectedDate); // transforme selectedDate qui est affiché en format fr en format correcte pour la Base de Données
+    const calendarToDo = { title, description, date: formattedDate};// envoie en format correcte les differentes valeur 
     const response = await fetch("/api/calendar", {
       method: "POST",
       body: JSON.stringify(calendarToDo),
@@ -104,7 +112,12 @@ const CalendarEventPopup = ({ handleAddEvent }) => {
             <input
                 type="text"
                 id="date"
-                value={date}
+                value={selectedDate.toLocaleDateString("fr-FR", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
                 onChange={handleEventDateChange}
                 className={` border-2 bg-transparent block mb-4 ${emptyFields.includes('date') ? 'error' : ""}`}
             />

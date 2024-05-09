@@ -33,7 +33,7 @@ export const calendarContextReducer = (state, action) => {
 
 export const CalendarContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(calendarContextReducer, {
-        calendar: null,
+        calendar: [],
     }); 
 
     return (

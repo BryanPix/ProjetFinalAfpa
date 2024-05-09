@@ -7,6 +7,7 @@ const CalendarDetails = () => {
   const { user } = useAuthContext();
   const [selectedDate] = useState(new Date());
   const [events, setEvents] = useState([]); 
+  
 
   useEffect(() => {
     // Fetch events when component mounts or when selectedDate changes
@@ -52,6 +53,7 @@ const CalendarDetails = () => {
     dispatch({ type: "DELETE_CALENDAR", payload: json });
     setEvents(prevEvents => prevEvents.filter(event => event._id !== eventId));
   };
+  
   const eventsForSelectedDate = events ?  events.filter(event => {
     return (
       event.date.getFullYear() === selectedDate.getFullYear() &&
@@ -68,13 +70,7 @@ const CalendarDetails = () => {
           {eventsForSelectedDate.map((event) => (
             <li key={event._id}>
               <p>
-                <strong>Date: </strong>{" "}
-                {event.date.toLocaleDateString("fr-FR", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                <strong>Date: </strong> {event.date}
               </p>
 
               <p>
@@ -82,9 +78,6 @@ const CalendarDetails = () => {
               </p>
               <p>
                 <strong>Description: </strong> {event.description}
-              </p>
-              <p>
-                <strong>ID: </strong> {event._id}
               </p>
               <span
                 className="material-symbols-outlined"
