@@ -20,6 +20,7 @@ const CalendarEventPopup = ({ handleAddEvent, selectedDate }) => {
     }));
 
   }, [selectedDate]);
+
   const handleEventTitleChange = (e) => {
     setTitle(e.target.value);
     setError("");
@@ -60,7 +61,7 @@ const CalendarEventPopup = ({ handleAddEvent, selectedDate }) => {
     }
 
     const formattedDate = new Date(selectedDate); // transforme selectedDate qui est affiché en format fr en format correcte pour la Base de Données
-    const calendarToDo = { title, description, date: formattedDate};// envoie en format correcte les differentes valeur 
+    const calendarToDo = { title, description, date: formattedDate};// envoie en format correcte les differentes valeurs 
     const response = await fetch("/api/calendar", {
       method: "POST",
       body: JSON.stringify(calendarToDo),

@@ -97,20 +97,7 @@ const CalendarApp = () => {
     );
   };
 
-  const filteredEvents = eventsForSelectedDate.filter(
-    (event) => event.date.toDateString() === date.toDateString()
-  );
-  useEffect(() => {
-    localStorage.setItem(
-      "test",
-      date.toLocaleDateString("fr-FR", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    );
-  }, [date]);
+
   return (
     <div className="calendar-container p-6 md:w-9/12 md:float-right  ">
         <h1 className="capitalize text-center text-white text-2xl font-bold underline underline-offset-4 pb-6">{currentDate}</h1>
@@ -131,7 +118,8 @@ const CalendarApp = () => {
                   day: "numeric",
                 }))}
           {showPopup && <CalendarEventPopup selectedDate={selectedDate} handleAddEvent={handleAddEvent} />}
-          <CalendarDetails eventsForSelectedDate={filteredEvents} />
+          {/* Permer d'afficher les evenements en fonction de la date sur laquelle on clique */}
+          <CalendarDetails selectedDate={selectedDate} />
           <div className="form-toggle bg-blue-500 rounded-sm text-center text-gray-50 md:my-24 py-1 px-3 md:px-5 md:w-fit">
           <button onClick={togglePopup} >
             {showPopup ? "Annuler": "Ajouter Evenement"}

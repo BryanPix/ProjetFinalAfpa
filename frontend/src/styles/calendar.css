@@ -45,7 +45,13 @@
 .calendar-container{
   background-color: #10439F;
 }
-
+.event-pointer{
+  height: 6px;
+  width: 6px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
 @media (min-width: 768px){
   .react-calendar{
     width:50vw;

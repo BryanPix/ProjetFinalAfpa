@@ -1,36 +1,41 @@
 import { useCalendarContext } from "../../hooks/useCalendarContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-const CalendarDetails = () => {
+const CalendarDetails = ({ selectedDate }) => {
   const { dispatch } = useCalendarContext();
   const { user } = useAuthContext();
-  const [selectedDate] = useState(new Date());
-  const [events, setEvents] = useState([]); 
-  
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    // Fetch events when component mounts or when selectedDate changes
+    // Permet de fetch les evenement lorsque la page se charge ou quand on clique sur une autre date sur le calendrier (avec selectedDate)
     const fetchEvents = async () => {
-      // Fetch events for selected date
-      const response = await fetch("/api/calendar/", {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-
-      if (!response.ok) {
-        console.error("Failed to fetch events:", response.statusText);
-        return;
+      try {
+        const response = await fetch("/api/calendar", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+    
+        if (!response.ok) {
+          throw new Error("Failed to fetch events");
+        }
+    
+        const data = await response.json();
+        // Permet de mettre à jour les données en tant qu'evenement
+        setEvents(data);
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching events:", error.message);
       }
-
-      const data = await response.json();
-      setEvents(data.events);
     };
 
     fetchEvents();
-  }, [user.token]);
-
+    console.log(fetchEvents);
+    // Permet d'inclure selectedDate en tant que dependance
+  }, [user.token, selectedDate]);
+  
+  // Suppression événement
   const handleDeleteClick = async (eventId) => {
     if (!user) {
       return;
@@ -51,28 +56,33 @@ const CalendarDetails = () => {
     const json = await response.json();
 
     dispatch({ type: "DELETE_CALENDAR", payload: json });
-    setEvents(prevEvents => prevEvents.filter(event => event._id !== eventId));
-  };
-  
-  const eventsForSelectedDate = events ?  events.filter(event => {
-    return (
-      event.date.getFullYear() === selectedDate.getFullYear() &&
-      event.date.getMonth() === selectedDate.getMonth() &&
-      event.date.getDate() === selectedDate.getDate()
+    setEvents((prevEvents) =>
+      prevEvents.filter((event) => event._id !== eventId)
     );
-  }): [];
+  };
+  const eventsForSelectedDate = events
+    ? events.filter((event) => {
+      // permet de convertir la date string en Date objet
+      const eventDate = new Date(event.date); 
+        return (
+          eventDate.getFullYear() === selectedDate.getFullYear() &&
+          eventDate.getMonth() === selectedDate.getMonth() &&
+          eventDate.getDate() === selectedDate.getDate()
+        );
+      })
+    : [];
+console.log(eventsForSelectedDate);
 
   return (
     <div className="calendarDetails text-white lg:-inset-x-44  md:w-fit">
       <h2 className="font-bold">Evenements: </h2>
       {eventsForSelectedDate.length > 0 ? (
-        <ul >
+        <ul>
           {eventsForSelectedDate.map((event) => (
             <li key={event._id}>
               <p>
-                <strong>Date: </strong> {event.date}
+              <strong>Date: </strong> {new Date(event.date).toLocaleDateString()}
               </p>
-
               <p>
                 <strong>Titre: </strong> {event.title}
               </p>
@@ -80,9 +90,10 @@ const CalendarDetails = () => {
                 <strong>Description: </strong> {event.description}
               </p>
               <span
-                className="material-symbols-outlined"
+                className="material-symbols-outlined cursor-pointer"
                 onClick={() => handleDeleteClick(event._id)}
-                >
+               
+              >
                 delete
               </span>
             </li>

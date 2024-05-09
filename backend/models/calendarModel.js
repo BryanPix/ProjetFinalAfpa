@@ -15,9 +15,7 @@ const calendarSchema = new Schema({
         required: true
     },
     user_id: {
-        // Permet a user_id d'être stocker comme un réference à un document 
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User', 
+        type: String,
         required: true
     },
     date: {

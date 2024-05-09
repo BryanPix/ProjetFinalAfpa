@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const getCalendar = async (req, res) => {
     const user_id = req.user._id;
 
-    const calendars = await Calendar.find({ user_id }).sort({createdAt: -1}) // permet de trouver toutes les tâches du calendrier et de les trier par ancienté du plus recent au plus ancient
+    const calendars = await Calendar.find({ user_id }) // permet de trouver toutes les tâches du calendrier et de les trier par ancienté du plus recent au plus ancient
 
     res.status(200).json(calendars);
 }
