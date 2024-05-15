@@ -74,28 +74,28 @@ const CalendarDetails = ({ selectedDate }) => {
 console.log(eventsForSelectedDate);
 
   return (
-    <div className="calendarDetails text-white lg:-inset-x-44  md:w-fit">
-      <h2 className="font-bold">Evenements: </h2>
+    <div className="calendarDetails">
+      <h2 className="calendarEvents my-3">Evenements: </h2>
       {eventsForSelectedDate.length > 0 ? (
         <ul>
           {eventsForSelectedDate.map((event) => (
-            <li key={event._id}>
-              <p>
-              <strong>Date: </strong> {new Date(event.date).toLocaleDateString()}
+            <li key={event._id} className="eventList mb-3 p-3 pt-2 pb-1">
+              <p> 
+              <strong className="eventTitle">Date: </strong> {new Date(event.date).toLocaleDateString()}
               </p>
               <p>
-                <strong>Titre: </strong> {event.title}
+                <strong className="eventTitle">Titre: </strong> {event.title}
               </p>
               <p>
-                <strong>Description: </strong> {event.description}
+                <strong className="eventTitle">Description: </strong> {event.description}
               </p>
               <span
-                className="material-symbols-outlined cursor-pointer"
+                className="material-symbols-outlined closeEvents "
                 onClick={() => handleDeleteClick(event._id)}
-               
               >
                 delete
               </span>
+              
             </li>
           ))}
         </ul>

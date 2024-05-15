@@ -6,8 +6,7 @@ import CalendarEventPopup from "./calendarForm";
 import CalendarDetails from "./calendarDetails";
 import { useCalendarContext } from "../../hooks/useCalendarContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import "../../styles/calendar.css"
-
+import "../../styles/calendar.css";
 
 const CalendarApp = () => {
   const [date, setDate] = useState(new Date());
@@ -17,10 +16,9 @@ const CalendarApp = () => {
   const { user } = useAuthContext();
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-
   // premier argument (useState)
   const [currentDate, setCurrentDate] = useState("");
-//  deuxième argument (useEffect)
+  //  deuxième argument (useEffect)
   useEffect(() => {
     // Pour la date actuelle afficher en grand :D
     // fonction permettant de recuperer la date actuelle et la formatter
@@ -35,49 +33,48 @@ const CalendarApp = () => {
       return today.toLocaleDateString("fr-FR", options);
     };
 
-    // Permet d'appliquer la date actuelle au component 
+    // Permet d'appliquer la date actuelle au component
     setCurrentDate(getCurrentDate());
   }, []); // applique cet effet une seule fois grace à l'utilisation du tableau vide qui prend le second argument (useEffect)
-  
+
   useEffect(() => {
     const fetchCalendarToDo = async () => {
-        const response = await fetch("/api/calendar", {
-          headers:  {
-            'Authorization': `Bearer ${user.token}`
-          }
-        } );
-        const json = await response.json();
+      const response = await fetch("/api/calendar", {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
 
-        if (response.ok) {
-          dispatch({ type: "SET_CALENDAR", payload: json });
-        }
+      if (response.ok) {
+        dispatch({ type: "SET_CALENDAR", payload: json });
+      }
 
-        const transformedEvent = json.map(({date, title, body: description }) => {
-          const eventDate = new Date(date); 
+      const transformedEvent = json.map(
+        ({ date, title, body: description }) => {
+          const eventDate = new Date(date);
 
           return {
             date: eventDate,
             title,
-            description
-        };
-        });
-        
-        setEventsForSelectedDate(transformedEvent);
+            description,
+          };
+        }
+      );
+
+      setEventsForSelectedDate(transformedEvent);
     };
-    if (user){
+    if (user) {
       fetchCalendarToDo();
     }
   }, [dispatch, user]);
-  
 
-  
   const handleDateChange = (date) => {
     setDate(date);
     setSelectedDate(date);
-  }
+  };
 
   const handleAddEvent = (title, description) => {
-    
     const newEvent = {
       date: date,
       title: title,
@@ -97,35 +94,43 @@ const CalendarApp = () => {
     );
   };
 
-
   return (
-    <div className="calendar-container p-6 md:w-9/12 md:float-right  ">
-        <h1 className="capitalize text-center text-white text-2xl font-bold underline underline-offset-4 pb-6">{currentDate}</h1>
+    <div className="calendar-container ">
+      <h1 className="currentDate text-center mb-3">{currentDate}</h1>
 
-        <Calendar 
-            onChange={handleDateChange} 
-            value={date} 
-            minDetail="year" 
-            tileContent={({ date }) => 
-              isDateWithEvent({ date }) && <div className="event-pointer"></div>
-          }
-          className="md:float-left md:mb-2"
+      <Calendar
+        onChange={handleDateChange}
+        value={date}
+        minDetail="year"
+        tileContent={({ date }) =>
+          isDateWithEvent({ date }) && <div className="event-pointer relative"></div>
+        }
+        className=""
+      />
+      {showPopup && (
+        <CalendarEventPopup
+          selectedDate={selectedDate}
+          handleAddEvent={handleAddEvent}
         />
-        {console.log(date.toLocaleDateString("fr-FR", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                }))}
-          {showPopup && <CalendarEventPopup selectedDate={selectedDate} handleAddEvent={handleAddEvent} />}
-          {/* Permer d'afficher les evenements en fonction de la date sur laquelle on clique */}
-          <CalendarDetails selectedDate={selectedDate} />
-          <div className="form-toggle bg-blue-500 rounded-sm text-center text-gray-50 md:my-24 py-1 px-3 md:px-5 md:w-fit">
-          <button onClick={togglePopup} >
-            {showPopup ? "Annuler": "Ajouter Evenement"}
-          </button>
-          </div>
+      )}
+      {/* Permer d'afficher les evenements en fonction de la date sur laquelle on clique */}
+      <CalendarDetails selectedDate={selectedDate} />
+      <div className="form-toggle">
+        <button
+          onClick={togglePopup}
+          className="btn-add border-2 px-3 mb-5 mt-2 w-full "
+        >
+          {showPopup ? (
+            "Annuler"
+          ) : (
+            <span>
+              <span class="material-symbols-outlined addIcon">add_circle</span>
+              Ajouter Evenement
+            </span>
+          )}
+        </button>
       </div>
+    </div>
   );
 };
 

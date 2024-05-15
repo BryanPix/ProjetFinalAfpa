@@ -1,90 +1,128 @@
+*{
+  color: white;
+}
 /* Position and sizing of burger button */
 .bm-burger-button {
-    position: absolute;
-    width: 33px;
-    height: 30px;
-    left: 25px;
-    top: 29px;
-  }
-  
-  /* Color/shape of burger icon bars */
-  .bm-burger-bars {
-    background: white;
-  }
-  /* Color/shape of burger icon bars on hover*/
-  .bm-burger-bars-hover {
-    background: #a90000;
-  }
-  
-  /* Position and sizing of clickable cross button */
-  .bm-cross-button {
-    height: 24px;
-    width: 24px;
-  }
-  
-  /* Color/shape of close button cross */
-  .bm-cross {
-    background: white;
-  }
-  
-  /*
+  position: absolute;
+  width: 33px;
+  height: 30px;
+  left: 25px;
+  top: 29px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: white;
+}
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: white;
+}
+
+/*
   Sidebar wrapper styles
   Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
   */
-  .bm-menu-wrap {
-    position: fixed;
-    height: 100%;
-  }
-  
-  /* General sidebar styles */
-  .bm-menu {
-    background-color: #10439F;
-    padding: 0.5em 1.5em 0;
-    font-size: 1.15em;
-  }
-  
-  /* Morph shape necessary with bubble or elastic */
-  .bm-morph-shape {
-    fill: #373a47;
-  }
-  
-  /* Wrapper for item list */
-  .bm-item-list {
-    padding: 0.8em;
-  }
-  
-  /* Individual item */
-  /* .bm-item {
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: rgb(209, 64, 9);
+  background: linear-gradient(
+      0deg,
+      rgba(209, 64, 9, 1) 0%,
+      rgba(252, 150, 1, 1) 40%
+    )
+    no-repeat;
+  padding: 0.3rem 0.5rem;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  padding: 0.8em;
+}
+
+/* Individual item */
+/* .bm-item {
     display: inline-block;
   } */
-  
-  /* Styling of overlay */
-  .bm-overlay {
-    background: rgba(0, 0, 0, 0.3);
-  }
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
 
 /* CSS perso pour burger */
 
-.material-symbols-outlined{
-  color: #FD7014;
-}
 
-.todoInput{
-  outline:none;
+.todoInput {
+  outline: none;
+  background-color: transparent;
+  border:1px solid white;
+  width:100%;
 }
-.navbarContainer{
+.toDoDetails{
+  position: relative;
+  word-wrap: break-word;
+}
+.todoTimestamp{
+  font-size:0.8rem;
+  font-style: italic;
+}
+.todoTitle{
+  font-size:1.3rem;
+  text-transform: capitalize;
+}
+.todoInput::placeholder{
+  color: rgba(255,255,255,0.4);
+}
+.navbarContainer {
   color: black;
 }
-
-.infoUser{
+.iconSave{
+  color:rgb(128,0,128);
+  border: 1px solid;
+  display:block;
+  text-align:center;
+  width:100%;
+  margin: 1rem 0 1rem 0;
+}
+.infoUser {
   height: 10vh;
 }
-.todo{
-  background-color: #10439F;
+.iconEdit{
+  margin-left:3%;
+  color:rgb(128,0,128);
 }
-
+.iconDelete{
+  margin-left:1rem;
+  color:rgb(128,0,128);
+}
+.addTodo{
+  margin-bottom: 5rem;
+}
 /* media queries */
-@media (max-width: 640px) { 
+@media (max-width: 640px) {
   .bm-burger-button {
     position: absolute;
     width: 30px;
@@ -92,5 +130,4 @@
     left: 15px;
     top: 29px;
   }
-  
- }
+}

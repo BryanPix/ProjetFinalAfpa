@@ -30,13 +30,13 @@ const Todo = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="todo text-black">
-      <div className="todolist">
+    
+      <div className="todolist mb-9">
         <TodoForm />
         {toDoList &&
           toDoList.map((toDo) => <ToDoDetails key={toDo._id} tache={toDo} />)}
       </div>
-    </div> 
+  
   );
 };
 

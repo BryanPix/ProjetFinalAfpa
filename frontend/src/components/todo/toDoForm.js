@@ -43,27 +43,29 @@ const TodoForm = () => {
   };
 
   return (
-    <form className="todoForm my-4" onSubmit={handleSubmit}>
-      <label className="py-1 text-white font-bold text-2xl">To-Do List</label>
+    <form className="todoForm" onSubmit={handleSubmit}>
+      
+      <label className="font-bold">To-Do List:</label>
       
       <input
         type="text"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
-        className={`todoInput appearance-none bg-transparent border-b border-white my-4 text-white  ${
+        className={`todoInput my-2 ${
           emptyFields.includes("title") ? "error" : ""
         }`}
-        placeholder="Ajouter une tâche"
+        placeholder="ex: Acheter du pain"
       />
 
 
       {error && (
-        <div className="error border-2 border-red-500 text-red-500 rounded-sm text-center text-base p-1 ">
+        <div className="error text-red-700">
           {error}
         </div>
       )}
-      <button className="relative mt-4 px-8 py-2  bg-blue-500 rounded-sm text-center text-gray-50">
-        Ajoute Tâche
+      <button className="addTodo border-2 px-3 mt-6 w-full">
+      <span class="material-symbols-outlined addIcon">add_circle</span>
+        Enregistrer
       </button>
     </form>
   );

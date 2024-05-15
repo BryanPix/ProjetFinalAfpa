@@ -71,10 +71,10 @@ const ToDoDetails = ({ tache }) => {
   };
 
   return (
-    <div className="toDoDetails py-1 dark:text-white">
+    <div className="toDoDetails">
       {/* faire apparaite differents élements en fonction de la condition ternaire */}
       {!isEditing ? (
-        <span className="py-1 text-white">
+        <span className="todoTitle">
           {tache.title}
         </span>
       ) : (
@@ -84,33 +84,33 @@ const ToDoDetails = ({ tache }) => {
           value={value}
           onChange={handleInputChange}
           autoFocus 
-          className="resize-none appearance-none bg-transparent border border-white text-white"
+          className="bg-transparent outline-none border-2 w-full"
         />
       )}
       {!isEditing && (
-        <span className="material-symbols-outlined top-1.5 mx-2 cursor-pointer relative" onClick={handleEditClick}>
+        <span className="material-symbols-outlined iconEdit" onClick={handleEditClick}>
           edit
         </span>
       )}
       {isEditing ? (
-        <span className="material-symbols-outlined top-1.5  cursor-pointer relative" onClick={handleSaveClick}>
-          save
+        <span className="iconSave" onClick={handleSaveClick}>
+          Modifier
         </span>
       ) : (
         <span
-          className="material-symbols-outlined top-1.5 mx-2 cursor-pointer relative "
+          className="material-symbols-outlined iconDelete"
           onClick={handleDeleteClick}
         >
           delete
         </span>
       )}
-      <p className="text-sm  mb-7 mt-2 text-white font-bold">
+      <p className="todoTimestamp">
         {formatDistanceToNow(new Date(tache.createdAt), {
           addSuffix: true,
           locale: fr,
         })}
       </p>
-        <hr className="my-4"></hr>
+        <hr className="my-3"></hr>
     </div>
   );
 };

@@ -1,36 +1,68 @@
-
-.invitRedirect{
-    position: relative;
-    bottom: -80vh;
-    left: 3vh;
-    width: fit-content;
-    
+body {
+  background: rgb(209, 64, 9);
+  background: linear-gradient(
+      0deg,
+      rgba(209, 64, 9, 1) 0%,
+      rgba(252, 150, 1, 1) 40%
+    )
+    no-repeat;
+  min-height: 100vh;
 }
-
-@media (max-width: 640px) { 
-    .bm-burger-button {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      left: 15px;
-      top: 29px;
-    }
-    .invitRedirect{
-        position: relative;
-        bottom: -80vh;
-        left: 2vh;
-        width: fit-content;
-    }
-    .login{
-        display: block ;
-        margin-bottom: 10px
-    }
-    .btn-login, .btn-signup{
-        position: relative;
-        top:0.5rem;
-    }
-    .btn-signup{
-        top:2rem
-
-    }
-   }
+.invitRedirect {
+  position: relative;
+  top: 40rem;
+}
+.MainLogo {
+  width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.login, .signup{
+    font-weight:bold;
+}
+.btn-login,.btn-signup{
+    font-size: 1.2rem;
+    width: 100%;
+    border: 1px solid;
+    font-weight: bold;
+}
+.slogan{
+    text-align: center;
+}
+input::placeholder{
+    color: #374151;
+}
+.div-login,.div-signup{
+    margin: 0 1rem 0 1rem;
+}
+.error-message{
+  color:#4b0b0b;
+}
+@media (max-width: 640px) {
+  .bm-burger-button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 15px;
+    top: 29px;
+  }
+  .invitRedirect {
+    :position: relative;
+    bottom: -80vh;
+    left: 2vh;
+    width: fit-content;
+  }
+  .login {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .btn-login,
+  .btn-signup {
+    position: relative;
+    top: 0.5rem;
+  }
+  .btn-signup {
+    top: 2rem;
+  }
+}

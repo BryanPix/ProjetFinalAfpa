@@ -15,15 +15,12 @@ export default function Sidebar() {
   return (
     <Menu>
       <div className="infoUser">
-      <div className="infoNom text-white mb-2">
-      <span className="font-bold">Nom: </span><span>{user.name}</span>
-      </div>
-      <div className="infoEmail text-white">
-      <span className="font-bold">Email: </span><span>{user.email}</span>
+      <div className="infoNom ">
+      <span className="">Bienvenue {user.name} !</span>
       </div>
       </div>
     <Todo />  
-    <button onClick={handleClick} className="relative mb-10 px-8 py-2 border-2 text-white">Déconnexion</button>
+    <button onClick={handleClick} className="border-2 px-3 mb-5 mt-6 w-full">Déconnexion</button>
     </Menu>
   );
 };

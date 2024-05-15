@@ -5,8 +5,13 @@
 *{
     /* Permet une transition lors du darkMode */
     @apply transition-colors duration-300;
+    color:#F0DEB8;
 }
 html{
     height: 100%;
-    background-color: #10439F;
+    background: rgb(209,64,9);
+
+}
+textarea{
+    resize: none;
 }
