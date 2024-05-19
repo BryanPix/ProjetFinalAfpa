@@ -109,12 +109,13 @@
   color: rgb(128, 0, 128);
 }
 
-.inputDate{
+.inputDate {
   background-color: #fc9601;
-  color:black;
+  color: black;
 }
-
-
+.error-message-calendar{
+  color: #4b0b0b;
+}
 /* pour tablette galaxy fold 2*/
 @media (min-width: 768px) {
   .react-calendar {
@@ -264,16 +265,16 @@
   .btn-submit {
     height: 2.4rem;
   }
-  .btn-form-submit{
+  .btn-form-submit {
     margin-top: 4rem;
   }
   .noEvent {
     font-size: 1.3rem;
   }
-  .error-message {
+  .error-message-calendar {
     font-size: 1.3rem;
     position: relative;
-    top:-7rem;
+    top: -7rem;
   }
   .slogan {
     font-size: 1.3rem;
@@ -281,32 +282,31 @@
   .MainLogo {
     width: 70%;
   }
-  .calendarDetails{
+  .calendarDetails {
     float: right;
-    position:relative;
-    left: -3%; 
-    width:50%; 
+    position: relative;
+    left: -3%;
+    width: 50%;
   }
-  .div-calendarForm{
+  .div-calendarForm {
     float: left;
-    position:relative;
+    position: relative;
     right: -3%;
-    top:3rem; 
-    width:40%;
+    top: 3rem;
+    width: 40%;
   }
-  .btn-event{
+  .btn-event {
     float: left;
-    position:absolute;
-    top:35rem;
-    left: 4%; 
-    width:39%;
+    position: absolute;
+    top: 35rem;
+    left: 4%;
+    width: 39%;
   }
-  .btn-cancel:hover{
+  .btn-cancel:hover {
     background-color: white;
     color: black;
   }
-  .material-symbols-outlined{
-    cursor:pointer;
+  .material-symbols-outlined {
+    cursor: pointer;
   }
-
 }

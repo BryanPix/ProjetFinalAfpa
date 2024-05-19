@@ -118,7 +118,7 @@ const CalendarEventPopup = ({ handleAddEvent, selectedDate }) => {
           </div>
             <button type="submit" className="btn-submit btn-form-submit border-2 px-3 mb-5 mt-6 w-full"><span class="material-symbols-outlined addIcon">add_circle</span>Enregistrer</button>
         </form>
-        {error && <p className="error-message">{error}</p>}
+        {error && <p className="error-message-calendar">{error}</p>}
     </div>
   );
 };
