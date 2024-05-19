@@ -15,12 +15,11 @@ export default function Sidebar() {
   return (
     <Menu>
       <div className="infoUser">
-      <div className="infoNom ">
-      <span className="">Bienvenue {user.name} !</span>
+      <span className="welcomeMessage">Bienvenue {user.name} !</span>
       </div>
-      </div>
+      <hr className='my-7'></hr>
     <Todo />  
-    <button onClick={handleClick} className="border-2 px-3 mb-5 mt-6 w-full">Déconnexion</button>
+    <button onClick={handleClick} className="btn-logout border-2 px-3 mb-5 mt-6 w-full">Déconnexion</button>
     </Menu>
   );
 };

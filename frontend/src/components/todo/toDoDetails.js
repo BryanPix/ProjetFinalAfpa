@@ -84,7 +84,7 @@ const ToDoDetails = ({ tache }) => {
           value={value}
           onChange={handleInputChange}
           autoFocus 
-          className="bg-transparent outline-none border-2 w-full"
+          className="textAreaTodo bg-transparent outline-none border-2 w-full"
         />
       )}
       {!isEditing && (

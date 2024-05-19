@@ -1,4 +1,4 @@
-*{
+* {
   color: white;
 }
 /* Position and sizing of burger button */
@@ -62,11 +62,6 @@
   padding: 0.8em;
 }
 
-/* Individual item */
-/* .bm-item {
-    display: inline-block;
-  } */
-
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
@@ -74,60 +69,105 @@
 
 /* CSS perso pour burger */
 
-
 .todoInput {
   outline: none;
   background-color: transparent;
-  border:1px solid white;
-  width:100%;
+  border: 1px solid white;
+  width: 100%;
 }
-.toDoDetails{
+.toDoDetails {
   position: relative;
   word-wrap: break-word;
 }
-.todoTimestamp{
-  font-size:0.8rem;
+.todoTimestamp {
+  font-size: 0.8rem;
   font-style: italic;
 }
-.todoTitle{
-  font-size:1.3rem;
+.todoTitle {
+  font-size: 1.3rem;
+}
+.todoTitle:first-letter {
   text-transform: capitalize;
 }
-.todoInput::placeholder{
-  color: rgba(255,255,255,0.4);
+.todoInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
 .navbarContainer {
   color: black;
 }
-.iconSave{
-  color:rgb(128,0,128);
+.iconSave {
+  color: rgb(128, 0, 128);
   border: 1px solid;
-  display:block;
-  text-align:center;
-  width:100%;
+  display: block;
+  text-align: center;
+  width: 100%;
   margin: 1rem 0 1rem 0;
+  cursor: pointer;
 }
 .infoUser {
   height: 10vh;
 }
-.iconEdit{
-  margin-left:3%;
-  color:rgb(128,0,128);
+.iconEdit {
+  margin-left: 3%;
+  color: rgb(128, 0, 128);
 }
-.iconDelete{
-  margin-left:1rem;
-  color:rgb(128,0,128);
+.iconDelete {
+  margin-left: 1rem;
+  color: rgb(128, 0, 128);
 }
-.addTodo{
+.addTodo {
   margin-bottom: 5rem;
 }
-/* media queries */
-@media (max-width: 640px) {
+.bm-burger-button {
+  left: 1.5rem;
+  top: 2.6rem;
+}
+.welcomeMessage{
+  font-size: 1.4rem;
+}
+/* pour tablette galaxy fold 2*/
+@media (min-width: 768px) {
   .bm-burger-button {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    left: 15px;
-    top: 29px;
+    width: 2.9rem;
+    height: 2.5rem;
+    left: 3rem;
+    top: 4rem;
+  }
+  .todoTitle {
+    font-size: 1.4rem;
+  }
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+  .addTodo {
+    margin-bottom: 5rem;
+  }
+  .titleTodo{
+    font-size: 1.6rem;
+  }
+  .todoInput {
+    font-size: 1.3rem;
+  }
+
+  .addTodo {
+    height:2.4rem;
+  }
+  .error{
+    font-size: 1.3rem;
+  }
+  .textAreaTodo{
+   font-size: 1.3rem;
+  }
+  .btn-logout{
+    height:2.4rem;
+    font-weight:bold;
+  }
+}
+@media (min-width: 1024px) {
+  .bm-burger-button {
+    left: 5rem;
+    top: 5.5rem;
   }
 }

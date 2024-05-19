@@ -77,7 +77,7 @@ const CalendarEventPopup = ({ handleAddEvent, selectedDate }) => {
   };
 
   return (
-    <div className="text-center">
+    <div className="div-calendarForm text-center">
         <form onSubmit={handleSubmit} className="form-container">
           <div className="divTitre mt-3">
             <label className="labelEvent">Titre de l'évenement: </label>
@@ -87,6 +87,7 @@ const CalendarEventPopup = ({ handleAddEvent, selectedDate }) => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className={` inputEvent border-b-2  ${emptyFields.includes('title') ? 'error' : ""}`}
+                placeholder="ex: 8h"
             />
           </div>
           <div className="divDescription mt-2 text-center">
@@ -96,7 +97,8 @@ const CalendarEventPopup = ({ handleAddEvent, selectedDate }) => {
                 value={description}
                 spellCheck="false"
                 onChange={(e) => setDescription(e.target.value)}
-                className={` inputEvent ${emptyFields.includes('description') ? 'error' : ''}`}
+                className={` calendarDescription inputEvent ${emptyFields.includes('description') ? 'error' : ''}`}
+                placeholder="ex: Rdv medecin"
             ></textarea>
           </div>
           <div className="divDate mt-2 text-center">
@@ -111,10 +113,10 @@ const CalendarEventPopup = ({ handleAddEvent, selectedDate }) => {
                   day: "numeric",
                 })}
                 onChange={(e) => setDate(e.target.value)}
-                className={` inputEvent bg-transparent text-center ${emptyFields.includes('date') ? 'error' : ""}`}
+                className={` inputDate inputEvent bg-transparent text-center ${emptyFields.includes('date') ? 'error' : ""}`}
             />
           </div>
-            <button type="submit" className="border-2 px-3 mb-5 mt-6 w-full"><span class="material-symbols-outlined addIcon">add_circle</span>Enregistrer</button>
+            <button type="submit" className="btn-submit btn-form-submit border-2 px-3 mb-5 mt-6 w-full"><span class="material-symbols-outlined addIcon">add_circle</span>Enregistrer</button>
         </form>
         {error && <p className="error-message">{error}</p>}
     </div>

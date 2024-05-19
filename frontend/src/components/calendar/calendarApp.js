@@ -118,10 +118,10 @@ const CalendarApp = () => {
       <div className="form-toggle">
         <button
           onClick={togglePopup}
-          className="btn-add border-2 px-3 mb-5 mt-2 w-full "
+          className="btn-submit btn-event border-2 px-3 mb-5 mt-2 w-full "
         >
           {showPopup ? (
-            "Annuler"
+            <span class="">Annuler</span>
           ) : (
             <span>
               <span class="material-symbols-outlined addIcon">add_circle</span>

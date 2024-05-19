@@ -24,14 +24,12 @@ const CalendarDetails = ({ selectedDate }) => {
         const data = await response.json();
         // Permet de mettre à jour les données en tant qu'evenement
         setEvents(data);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching events:", error.message);
       }
     };
 
     fetchEvents();
-    console.log(fetchEvents);
     // Permet d'inclure selectedDate en tant que dependance
   }, [user.token, selectedDate]);
   
@@ -71,7 +69,6 @@ const CalendarDetails = ({ selectedDate }) => {
         );
       })
     : [];
-console.log(eventsForSelectedDate);
 
   return (
     <div className="calendarDetails">
@@ -100,7 +97,7 @@ console.log(eventsForSelectedDate);
           ))}
         </ul>
       ) : (
-        <p className="">Aucun évenement aujourd'hui</p>
+        <p className="noEvent text-center ">Aucun évenement aujourd'hui</p>
       )}
     </div>
   );

@@ -13,7 +13,6 @@ export const useSignup = () => {
         setIsLoading(true)
         setError(null)
 
-
         // l'utilisation d'un url partiel est grace au proxy se trouvant dans le package json coté frontend (le debut de l'url est bien localhost:4000)
         const response = await fetch('/api/user/signup', {
             method: 'POST',

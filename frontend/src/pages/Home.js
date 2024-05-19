@@ -2,6 +2,7 @@
 import CalendarApp from "../components/calendar/calendarApp";
 import Sidebar from "../components/menuBurger";
 import Logo from "../components/mainLogo";
+import '../styles/calendar.css';
 
 const Home = () => {
   return (

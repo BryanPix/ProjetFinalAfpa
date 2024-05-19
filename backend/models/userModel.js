@@ -8,15 +8,15 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   name: {
     type: String,
-    required: true
+    required: true,
   }
 });
 
@@ -25,18 +25,41 @@ const userSchema = new Schema({
 
 // methode statique pour l'inscription
 // Quand on veut utiliser le mot clé "this" il faut une fonction normale et non fléchée
-userSchema.statics.signup = async function(email, password, name) {
-
+userSchema.statics.signup = async function (email, password, name) {
   // Validation à l'aide d'une librairie npm "validator", elle permet d'effectuer les controles sur la presence d'un email ou d'un mot de passe eventuellement puissant (plutôt que de passer par des REGEX)
-  if (!email || !password || !name){
-    throw Error('Tous les champs doivent être rempli');
+  
+  // Verification des inputs manquants
+  if (!email && !password && !name) {
+    throw Error("Tous les champs doivent être rempli.");
   }
+  if (!email && password && !name) {
+    throw Error("Veuillez ajouter un mail et un nom.");
+  }
+  if (!email && !password && name) {
+    throw Error("Veuillez ajouter un mail et un mot de passe.");
+  }
+  if (email && !password && !name) {
+    throw Error("Veuillez ajouter un mot de passe et un nom.");
+  }
+  if (email && !password && name) {
+    throw Error("Veuillez ajouter un mot de passe.");
+  }
+  if (email && password && !name) {
+    throw Error("Veuillez ajouter un nom.");
+  }
+  if (!email && password && name) {
+    throw Error("Veuillez ajouter un mail.");
+  }
+
   // Utilisation de la methode isEmail pour verifier si le champ rempli est un email
-  if(!validator.isEmail(email)){
-    throw Error(`L'email n'est pas valide`);
+  if (email && password && name && !validator.isEmail(email)) {
+      throw Error(`L'email n'est pas valide`);
   }
-  if(!validator.isStrongPassword(password)){
-    throw Error(`Le mot de passe doit contenir au moins: 8 charactères, une lettre majuscule, une lettre minuscule, un chiffre, et un charactère spécial. `);
+  
+  if (!validator.isStrongPassword(password)) {
+    throw Error(
+      `Le mot de passe doit contenir au moins: 8 charactères, une lettre majuscule, une lettre minuscule, un chiffre, et un charactère spécial. `
+    );
   }
 
   // On cherche à voir si le mail existe
@@ -52,29 +75,28 @@ userSchema.statics.signup = async function(email, password, name) {
   const hash = await bcrypt.hash(password, salt);
   // On prend le mot de passe qui est hash pour le conserver dans la base de données avec l'email de l'utilisateur (En noSQL on appelle ça un document pour l'utilisateur)
   // On utilise le mot clé "this" pour se réferer à la methode plus haut "(this.findOne({ email }))"
-  const user = await this.create({ email, password: hash ,name });
+  const user = await this.create({ email, password: hash, name });
   // Lorsque l'on voudra appeler la fonction "signup", on voudra que celle-ci nous retournes l'utilisateur d'où le "return user"
-  return user
+  return user;
 };
 
 // methode statique pour la conection
-userSchema.statics.login = async function(email, password){
-    if (!email || !password){
-        throw Error('Tous les champs doivent être rempli');
-      }
-      const user = await this.findOne({ email });
-     
-      if (!user) {
-        throw Error("Email incorrect");
-      }
-      const match = await bcrypt.compare(password, user.password)
+userSchema.statics.login = async function (email, password) {
+  if (!email || !password) {
+    throw Error("Tous les champs doivent être rempli");
+  }
+  const user = await this.findOne({ email });
 
-      if(!match){
-        throw Error("Mot de passe incorrect");
-      }
+  if (!user) {
+    throw Error("Email incorrect");
+  }
+  const match = await bcrypt.compare(password, user.password);
 
-      return user;
+  if (!match) {
+    throw Error("Mot de passe incorrect");
+  }
 
-}
+  return user;
+};
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);

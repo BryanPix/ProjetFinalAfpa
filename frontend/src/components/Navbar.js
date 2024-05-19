@@ -1,4 +1,3 @@
-import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Link, useLocation  } from 'react-router-dom';
 import "../styles/loginSignup.css";
@@ -10,20 +9,12 @@ const Navbar = () => {
   const isLoginPage = location.pathname === '/login';
   const isSignupPage = location.pathname === '/signup';
   
-    const { logout } = useLogout();
     const { user } = useAuthContext();
 
-    const handleClick = () => {
-      logout();
-    }
+    
   return (
 
         <nav className="signup">
-          {/* permet de montrer different bouton en fonction de si oui on non l'utilisateur est conncté */}
-          {user && (<div>
-            <button onClick={handleClick} className="hidden">Déconnexion</button>
-          </div>
-          )}
           {!user && (<div className="">
             {isLoginPage && (
                 <p className="invitRedirect pb-2">Vous n'avez pas de compte ? <Link to="/signup" className="text-blue-700 underline">Inscrivez-vous</Link></p> 

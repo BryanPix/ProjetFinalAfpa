@@ -8,9 +8,16 @@ body {
     no-repeat;
   min-height: 100vh;
 }
+.connexionSide{
+  display:none;
+}
 .invitRedirect {
   position: relative;
-  top: 40rem;
+  bottom: -3rem;
+  left: 0;
+  padding-bottom: 5rem;
+  width: fit-content;
+  font-size: 0.99rem;
 }
 .MainLogo {
   width: 60%;
@@ -18,51 +25,105 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.login, .signup{
-    font-weight:bold;
+.login,
+.signup {
+  font-weight: bold;
 }
-.btn-login,.btn-signup{
-    font-size: 1.2rem;
-    width: 100%;
-    border: 1px solid;
-    font-weight: bold;
+.btn-login,
+.btn-signup {
+  font-size: 1.2rem;
+  width: 100%;
+  border: 1px solid;
+  font-weight: bold;
+  position: relative;
+  top: 0.5rem;
 }
-.slogan{
-    text-align: center;
+.slogan {
+  text-align: center;
 }
-input::placeholder{
-    color: #374151;
+input::placeholder {
+  color: #374151;
 }
-.div-login,.div-signup{
-    margin: 0 1rem 0 1rem;
+.div-login,
+.div-signup {
+  margin: 0 1rem 0 1rem;
 }
-.error-message{
-  color:#4b0b0b;
+.error-message {
+  color: #4b0b0b;
 }
-@media (max-width: 640px) {
-  .bm-burger-button {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    left: 15px;
-    top: 29px;
-  }
+.login {
+  display: block;
+  margin-bottom: 10px;
+}
+.btn-signup {
+  top: 2rem;
+}
+/* pour tablette galaxy fold 2*/
+@media (min-width: 768px) {
   .invitRedirect {
-    :position: relative;
-    bottom: -80vh;
-    left: 2vh;
+    position: relative;
+    bottom: -6vh;
+    left: 27vh;
     width: fit-content;
   }
-  .login {
-    display: block;
-    margin-bottom: 10px;
-  }
-  .btn-login,
-  .btn-signup {
+  .error-message {
     position: relative;
-    top: 0.5rem;
+    top: 5vh;
   }
-  .btn-signup {
-    top: 2rem;
+  .eyeIcon {
+    position: relative;
+    left: 47%;
+  }
+  .MainLogo {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
+@media (min-width: 1024px) {
+  .divLogo {
+    float: left;
+    margin-top: 3rem;
+    margin-left: 9rem;
+    width: 29rem;
+    height: 35rem;
+  }
+  .MainLogo {
+    width: 20rem;
+    height: 15rem;
+    position: relative;
+    top:5rem;
+  }
+  .slogan{
+    position: relative;
+    top:4rem;
+  }
+  .div-login, .div-signup {
+    float: right;
+    margin-top: 6rem;
+    margin-right: 12rem;
+    width: 29rem;
+    height: fit-content;    
+  }
+  .error-message {
+    position: relative;
+    top: 5vh;
+  }
+  .eyeIcon {
+    position: relative;
+    left: 47%;
+  }
+  .connexionSide{
+    display: block;
+    font-size:1.4rem;
+    text-align:center;
+    font-weight:bold;
+  }
+  .invitRedirect {
+    position: relative;
+    left: 18%;
+    width: fit-content;
+  }
+}
+

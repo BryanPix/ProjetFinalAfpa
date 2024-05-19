@@ -4,154 +4,309 @@
 }
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
- background-color: brown;
+  background-color: brown;
 }
 
-.react-calendar{
-  border:none;
+.react-calendar {
+  border: none;
   border-radius: 3px;
-  background-color: #D14009;
+  background-color: #d14009;
   color: white;
 }
-.react-calendar__button{
+.react-calendar__button {
   color: white;
 }
 
-.react-calendar__navigation__label{
-  font-size:1.5rem;
+.react-calendar__navigation__label {
+  font-size: 1.5rem;
 }
-.react-calendar__navigation button:disabled{
+.react-calendar__navigation button:disabled {
   background-color: brown;
   font-size: 1.5rem;
 }
-.react-calendar__tile--active:enabled:hover, .react-calendar__tile--active:enabled{
-  background-color: rgb(216,150,255);
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled {
+  background-color: rgb(216, 150, 255);
 }
-.react-calendar__tile--active:enabled:hover, .react-calendar__tile--active:enabled:focus{
-  background-color: rgb(216,150,255);
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background-color: rgb(216, 150, 255);
 }
-.react-calendar abbr{
-  text-decoration:none;
+.react-calendar abbr {
+  text-decoration: none;
 }
-.react-calendar__tile:enabled:hover{
-  background-color:#3a0ca3;
+.react-calendar__tile:enabled:hover {
+  background-color: #3a0ca3;
 }
-.react-calendar__tile--now:enabled{
-  background-color:rgb(128,0,128);
+.react-calendar__tile--now:enabled {
+  background-color: rgb(128, 0, 128);
 }
-.react-calendar__tile--now:enabled:hover{
-  background-color:rgb(190,41,236);
+.react-calendar__tile--now:enabled:hover {
+  background-color: rgb(190, 41, 236);
 }
-.labelEvent{
-  font-weight:bold;
+.labelEvent {
+  font-weight: bold;
   font-size: 1.1rem;
-  text-align:center;
+  text-align: center;
 }
-.inputEvent{
-  width:100%;
-  background-color:transparent;
-  border:1px solid white;
+.inputEvent {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid white;
 }
-.form-container input{
-  outline:none;
+.form-container input {
+  outline: none;
 }
-.form-container textarea{
-  outline:none;
+.form-container textarea {
+  outline: none;
 }
-.calendar-container{
+.calendar-container {
   background: rgb(209, 64, 9);
-    background: linear-gradient(
-        0deg,
-        rgba(209, 64, 9, 1) 0%,
-        rgba(252, 150, 1, 1) 100%
-      )
-      no-repeat;    
+  background: linear-gradient(
+      0deg,
+      rgba(209, 64, 9, 1) 0%,
+      rgba(252, 150, 1, 1) 100%
+    )
+    no-repeat;
   padding: 0.5em 1em 0;
 }
-.event-pointer{
+.event-pointer {
   height: 5px;
   width: 5px;
-  background-color: white;
+  background-color: darkblue;
   border-radius: 40%;
-  left:14px;
-  top:2px;
+  left: 14px;
+  top: 2px;
 }
-.calendarEvents{
+.calendarEvents {
   font-weight: bold;
   text-align: center;
   font-size: 1.3rem;
 }
-.eventTitle{
+.eventTitle {
   font-size: 1.1rem;
 }
-.currentDate{
+.currentDate {
   font-size: 1.2rem;
   color: white;
   font-weight: bold;
 }
-.eventList{
-  background-color: rgba(209, 64, 9, .6);
-  position: relative;  
+.eventList {
+  background-color: rgba(209, 64, 9, 0.6);
+  position: relative;
 }
-.closeEvents{
+.closeEvents {
   position: absolute;
   top: 5%;
   right: 2%;
-  color: rgb(128,0,128);
+  color: rgb(128, 0, 128);
 }
-.addIcon{
+.addIcon {
   position: relative;
   top: 3px;
-  right:5px;
+  right: 5px;
   font-size: 1.2rem;
+  color: rgb(128, 0, 128);
 }
-.btn-add{
-  
+
+.inputDate{
+  background-color: #fc9601;
+  color:black;
 }
-@media (min-width: 768px){
-  .react-calendar{
-    width:50vw;
-    height:33vh;
+
+
+/* pour tablette galaxy fold 2*/
+@media (min-width: 768px) {
+  .react-calendar {
+    border: none;
+    border-radius: 3px;
+    background-color: #d14009;
+    color: white;
+    width: 100%;
+    height: 31rem;
   }
-  .form-container {
-    position: relative;
-    left: 4rem;
-    bottom: 22rem;
+  .react-calendar__tile {
+    height: 6vh;
+    font-size: 1.6rem;
   }
-  .error-message{
-    position: relative;
-    top: -8rem;
+  .event-pointer {
+    height: 7px;
+    width: 7px;
+    background-color: darkblue;
+    border-radius: 50%;
+    left: 3rem;
+    top: 10px;
+  }
+  .react-calendar__navigation button {
+    font-size: 2rem;
+  }
+  .react-calendar abbr {
+    font-size: 1.3rem;
+  }
+  .inputEvent {
+    border: 3px solid white;
+    height: 2rem;
+  }
+  .calendarDescription {
+    height: 4rem;
+  }
+  .eventTitle {
+    font-size: 1.3rem;
+  }
+  .eventList {
+    font-size: 1.2rem;
+  }
+  .addIcon {
+    font-size: 1.4rem;
+  }
+  .currentDate {
+    font-size: 1.4rem;
+    color: white;
+    font-weight: bold;
+  }
+  .closeEvents {
+    font-size: 1.9rem;
+  }
+  .labelEvent {
+    font-size: 1.4rem;
+  }
+  .form-container input {
+    font-size: 1.3rem;
+    height: 2.4rem;
+  }
+  .btn-submit {
+    height: 2.4rem;
+  }
+  .noEvent {
+    font-size: 1.3rem;
+  }
+  .error-message {
+    font-size: 1.3rem;
+    margin-bottom: 4rem;
+  }
+  .slogan {
+    font-size: 1.3rem;
+  }
+  .MainLogo {
+    width: 70%;
   }
 }
 @media (min-width: 1024px) {
-  .react-calendar{
-    width:45vw;
-    height:50vh;
+  .react-calendar {
+    margin-left: 2rem;
+    border: none;
+    border-radius: 3px;
+    background-color: #d14009;
+    color: white;
+    width: 95%;
+    height: 31rem;
   }
-  .form-container {
+  .divLogo {
+    float: left;
+    margin: 4rem 0 0 9rem;
+    width: 29rem;
+    height: 30rem;
+    border-right: 1px solid white;
+  }
+  .MainLogo {
+    width: 20rem;
+    height: 15rem;
     position: relative;
-    left: -5rem;
-    bottom: 1rem;
+    top: 5rem;
   }
-  .error-message{
-    position: relative;
-    left: -4rem;
-    top:-1rem;
-  }
-}
 
-@media (min-width: 1536px) {
-  .react-calendar{
-    width:45vw;
-    height:48vh;
+  .react-calendar__tile {
+    height: 8vh;
+    font-size: 1.6rem;
   }
-  .form-container {
+  .event-pointer {
+    height: 7px;
+    width: 7px;
+    background-color: darkblue;
+    border-radius: 50%;
+    left: 3.2rem;
+    top: 10px;
+  }
+  .inputEvent {
+    border: 3px solid white;
+    height: 2rem;
+  }
+  .calendarDescription {
+    height: 4rem;
+  }
+  .eventTitle {
+    font-size: 1.3rem;
+  }
+  .eventList {
+    font-size: 1.2rem;
+  }
+  .addIcon {
+    font-size: 1.4rem;
+  }
+  .currentDate {
+    font-size: 1.7rem;
+    color: white;
+    font-weight: bold;
     position: relative;
-    left: -11rem;
-    bottom: 1rem;
+    right: 17rem;
+    text-transform: capitalize;
   }
-  .error-message{
+  .closeEvents {
+    font-size: 1.9rem;
+  }
+  .labelEvent {
+    font-size: 1.4rem;
+  }
+  .form-container input {
+    font-size: 1.3rem;
+    height: 2.4rem;
+  }
+  .btn-submit {
+    height: 2.4rem;
+  }
+  .btn-form-submit{
+    margin-top: 4rem;
+  }
+  .noEvent {
+    font-size: 1.3rem;
+  }
+  .error-message {
+    font-size: 1.3rem;
     position: relative;
-    left: -9.5rem;
+    top:-7rem;
   }
+  .slogan {
+    font-size: 1.3rem;
+  }
+  .MainLogo {
+    width: 70%;
+  }
+  .calendarDetails{
+    float: right;
+    position:relative;
+    left: -3%; 
+    width:50%; 
+  }
+  .div-calendarForm{
+    float: left;
+    position:relative;
+    right: -3%;
+    top:3rem; 
+    width:40%;
+  }
+  .btn-event{
+    float: left;
+    position:absolute;
+    top:35rem;
+    left: 4%; 
+    width:39%;
+  }
+  .btn-cancel:hover{
+    background-color: white;
+    color: black;
+  }
+  .material-symbols-outlined{
+    cursor:pointer;
+  }
+
 }
