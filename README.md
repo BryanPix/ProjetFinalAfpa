@@ -1,4 +1,4 @@
-Pour visualiser ce projet : 
+<s>Pour visualiser ce projet : </s> 
 
 .  L'ouvrir dans vscode,
 
