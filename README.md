@@ -1,4 +1,5 @@
-<s>Pour visualiser ce projet : </s> 
+<s>
+Pour visualiser ce projet :  
 
 .  L'ouvrir dans vscode,
 
@@ -7,3 +8,4 @@
 .  Dans le terminal backend, executer la commande "npm run dev" pour demarrer le serveur.
 
 .  Dans le terminal frontend, executer la commande "npm start" pour demarrer le script react.
+</s>
