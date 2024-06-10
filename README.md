@@ -1,12 +1,7 @@
-<s>
 Pour visualiser ce projet :  
 
+Images docker pour le front et le back 
 
-.  L'ouvrir dans vscode,
+.  docker pull bryanpix/projetfinalfrontend:latest
 
-.  Ouvrir deux terminaux, un qui prend le chemin backend et l'autre frontend.
-
-.  Dans le terminal backend, executer la commande "npm run dev" pour demarrer le serveur.
-
-.  Dans le terminal frontend, executer la commande "npm start" pour demarrer le script react.
-</s>
+.  docker pull bryanpix/projetfinalbackend:latest
