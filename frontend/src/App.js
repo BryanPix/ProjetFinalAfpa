@@ -7,7 +7,6 @@ import Signup from "./pages/Signup";
 import Home from './pages/Home';
 import "./index.css";
 
-// useless commentary to test something can ignore or delete.
 
 function App() {
   const { user } = useAuthContext();
